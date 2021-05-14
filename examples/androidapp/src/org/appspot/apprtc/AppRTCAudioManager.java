@@ -256,7 +256,7 @@ public class AppRTCAudioManager {
 
     // Request audio playout focus (without ducking) and install listener for changes in focus.
     int result = audioManager.requestAudioFocus(audioFocusChangeListener,
-        AudioManager.STREAM_VOICE_CALL, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+        AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
     if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
       Log.d(TAG, "Audio focus request granted for VOICE_CALL streams");
     } else {
@@ -266,7 +266,7 @@ public class AppRTCAudioManager {
     // Start by setting MODE_IN_COMMUNICATION as default audio mode. It is
     // required to be in this mode when playout and/or recording starts for
     // best possible VoIP performance.
-    audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
+    audioManager.setMode(AudioManager.MODE_NORMAL);
 
     // Always disable microphone mute during a WebRTC call.
     setMicrophoneMute(false);

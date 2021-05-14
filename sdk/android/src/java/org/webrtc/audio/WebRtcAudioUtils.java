@@ -140,6 +140,8 @@ final class WebRtcAudioUtils {
         return "VOICE_RECOGNITION";
       case AudioSource.VOICE_COMMUNICATION:
         return "VOICE_COMMUNICATION";
+      case AudioSource.USAGE_MEDIA:
+        return "USAGE_MEDIA";
       case AudioSource.UNPROCESSED:
         return "UNPROCESSED";
       case VOICE_PERFORMANCE:
@@ -210,7 +212,7 @@ final class WebRtcAudioUtils {
 
   // Adds volume information for all possible stream types.
   private static void logAudioStateVolume(String tag, AudioManager audioManager) {
-    final int[] streams = {AudioManager.STREAM_VOICE_CALL, AudioManager.STREAM_MUSIC,
+    final int[] streams = {AudioManager.STREAM_MUSIC, AudioManager.STREAM_VOICE_CALL,
         AudioManager.STREAM_RING, AudioManager.STREAM_ALARM, AudioManager.STREAM_NOTIFICATION,
         AudioManager.STREAM_SYSTEM};
     Logging.d(tag, "Audio State: ");

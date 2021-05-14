@@ -61,7 +61,7 @@ class WebRtcAudioRecord {
   // but the wait times out afther this amount of time.
   private static final long AUDIO_RECORD_THREAD_JOIN_TIMEOUT_MS = 2000;
 
-  public static final int DEFAULT_AUDIO_SOURCE = AudioSource.VOICE_COMMUNICATION;
+  public static final int DEFAULT_AUDIO_SOURCE = AudioSource.USAGE_MEDIA;
 
   // Default audio data format is PCM 16 bit per sample.
   // Guaranteed to be supported by all devices.

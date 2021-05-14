@@ -51,7 +51,7 @@ class WebRtcAudioTrack {
 
   private static int getDefaultUsageAttribute() {
     if (Build.VERSION.SDK_INT >= 21) {
-      return AudioAttributes.USAGE_VOICE_COMMUNICATION;
+      return AudioAttributes.USAGE_MEDIA;
     } else {
       // Not used on SDKs lower than L.
       return 0;
@@ -352,7 +352,7 @@ class WebRtcAudioTrack {
   private int getStreamMaxVolume() {
     threadChecker.checkIsOnValidThread();
     Logging.d(TAG, "getStreamMaxVolume");
-    return audioManager.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL);
+    return audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
   }
 
   // Set current volume level for a phone call audio stream.
@@ -364,7 +364,7 @@ class WebRtcAudioTrack {
       Logging.e(TAG, "The device implements a fixed volume policy.");
       return false;
     }
-    audioManager.setStreamVolume(AudioManager.STREAM_VOICE_CALL, volume, 0);
+    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, volume, 0);
     return true;
   }
 
@@ -379,7 +379,7 @@ class WebRtcAudioTrack {
   private int getStreamVolume() {
     threadChecker.checkIsOnValidThread();
     Logging.d(TAG, "getStreamVolume");
-    return audioManager.getStreamVolume(AudioManager.STREAM_VOICE_CALL);
+    return audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
   }
 
   @CalledByNative
@@ -408,7 +408,7 @@ class WebRtcAudioTrack {
 
   private static void logNativeOutputSampleRate(int requestedSampleRateInHz) {
     final int nativeOutputSampleRate =
-        AudioTrack.getNativeOutputSampleRate(AudioManager.STREAM_VOICE_CALL);
+        AudioTrack.getNativeOutputSampleRate(AudioManager.STREAM_MUSIC);
     Logging.d(TAG, "nativeOutputSampleRate: " + nativeOutputSampleRate);
     if (requestedSampleRateInHz != nativeOutputSampleRate) {
       Logging.w(TAG, "Unable to use fast mode since requested sample rate is not native");
@@ -492,7 +492,7 @@ class WebRtcAudioTrack {
   @SuppressWarnings("deprecation") // Deprecated in API level 25.
   private static AudioTrack createAudioTrackOnLowerThanLollipop(
       int sampleRateInHz, int channelConfig, int bufferSizeInBytes) {
-    return new AudioTrack(AudioManager.STREAM_VOICE_CALL, sampleRateInHz, channelConfig,
+    return new AudioTrack(AudioManager.STREAM_MUSIC, sampleRateInHz, channelConfig,
         AudioFormat.ENCODING_PCM_16BIT, bufferSizeInBytes, AudioTrack.MODE_STREAM);
   }
 
