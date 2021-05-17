@@ -406,7 +406,7 @@ public class WebRtcAudioTrack {
     return new AudioTrack(
         new AudioAttributes.Builder()
             .setUsage(usageAttribute)
-            .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+            .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
         .build(),
         new AudioFormat.Builder()
           .setEncoding(AudioFormat.ENCODING_PCM_16BIT)

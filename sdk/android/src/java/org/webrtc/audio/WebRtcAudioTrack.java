@@ -419,10 +419,10 @@ class WebRtcAudioTrack {
     AudioAttributes.Builder attributesBuilder =
         new AudioAttributes.Builder()
             .setUsage(DEFAULT_USAGE)
-            .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH);
+            .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC);
 
     if (overrideAttributes != null) {
-      if (overrideAttributes.getUsage() != AudioAttributes.USAGE_UNKNOWN) {
+      if (overrideAttributes.getUsage() != AudioAttributes.USAGE_MEDIA) {
         attributesBuilder.setUsage(overrideAttributes.getUsage());
       }
       if (overrideAttributes.getContentType() != AudioAttributes.CONTENT_TYPE_UNKNOWN) {
